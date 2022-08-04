@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Tarefas:</title>
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+    </script>
+    <script src="index.js"></script>
+    <link href="index.css" rel="stylesheet">
+</head>
+
+<body> <!--Corpo do HTML-->
+
+    <div id="colum-bar"></div> <!--Coluna (barra) lateral esquerda-->
+    
+    <div class="container"> <!--div da class container, onde entre outros vai armazenar a minha tabela-->
+
+        <div id="logon"><img src="./assets/img/logo-arnia.png">
+        </div>
+
+        <div id="title"><img id="title-icon" src="./assets/img/icone-arnia.png">
+            Gerenciador de Tarefas
+        </div>
+
+        <div><button type="button" id="btn-modal" onclick="initModal()">+ Adicionar Tarefa </button></div>
+       
+        <div>
+            <table>
+
+                <thead id="title-table">
+                    <tr>
+                        <th class="col-1">Núm:</th>
+                        <th class="col-4">Descrição:</th>
+                        <th class="col-3">Data de entrega:</th>
+                        <th class="col-3">Status:</th>
+                        <th class="col-1">Ação:</th>
+                    </tr>
+                </thead>
+
+                <tbody id="bodyTable"></tbody>
+
+            </table>
+        </div>
+    </div>
+
+    <!--A baixo a div que alem de armazenar meu modal com todas suas funcionabilidades tambem 
+        tem um fundo com efeitode opacidade -->
+        
+    <div id="modal" class="assignment">
+        <div id="modal-int" class="container">
+            <p id="transformEdit">Adicionar Tarefa:</p>
+            <label>Número:</label><br>
+            <input id="num" type="number"><br>
+            <div id="obrigatoryOne" class="obrig"></div>
+            <label>Descrição:</label><br>
+            <input id="desc" type="text"><br>
+            <div id="obrigatoryTwo" class="obrig"></div>
+            <label>Data:</label><br>
+            <input id="data" type="date"><br>
+            <div id="obrigatoryThree" class="obrig"></div>
+            <label>Status:</label><br>
+            <select id="status">
+                <option hidden></option>
+                <option>Concluído</option>
+                <option>Em andamento</option>
+                <option>Parado</option>
+            </select>
+            <div id="obrigatoryFour" class="obrig"></div>
+            <div class="row">
+                <div class="col-2 mt-4 align-items-center mb-2"><span id="back" onclick="cancelModal()">Cancelar</span>
+                </div>
+                <div class="col-6"></div>
+                <div class="col-4 mt-2 align-items-center"><button id="save" type="button"
+                        onclick="addTask()">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
