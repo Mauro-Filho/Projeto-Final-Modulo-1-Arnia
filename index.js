@@ -8,11 +8,7 @@ function initModal() {
     document.getElementById("desc").value = ""
     document.getElementById("data").value = ""
     document.getElementById("status").value = ""
-    
-    document.getElementById("save").onclick = () => {
-        addTask()
 
-    }
 
     document.getElementById("transformEdit").innerHTML = "Adicionar Tarefa:"
     
