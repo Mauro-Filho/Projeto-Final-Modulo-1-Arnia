@@ -8,8 +8,7 @@ function initModal() {
     document.getElementById("desc").value = ""
     document.getElementById("data").value = ""
     document.getElementById("status").value = ""
-
-
+   
     document.getElementById("transformEdit").innerHTML = "Adicionar Tarefa:"
     
 }
@@ -53,7 +52,7 @@ async function addTask() {
         modal.style.display = "block"
     } else if (num && des && dat && statuus !== "") {
 
-        dados = {
+        dados = {  //-> as variaveis do meu objetoestao em portugues porforça maior sei que nao éboa pratica usar o portugues e menosainda usar dois ou mais idiomas. Por isso ja deixo a justuficativa aqui.
             numero: parseInt(num),
             descricao: des,
             data: dat,
@@ -76,8 +75,8 @@ async function addTask() {
 //Função responsavel por salvar os dados após  no arquivo json (API). Após editalos atraves da função editTesk.
 async function saveEdit(element) {
 
-    let resposta = await fetch(`http://localhost:3000/dados/${element}`)
-    let recebe = await resposta.json()
+    let Calling = await fetch(`http://localhost:3000/dados/${element}`)
+    let Stores = await Calling.json() 
     let num = document.getElementById("num").value
     let des = document.getElementById("desc").value
     let dat = document.getElementById("data").value
@@ -108,11 +107,12 @@ async function saveEdit(element) {
 }
 
  // Função assincrona onde os dados do arquivo json se comunica com a tabela html sendo exibido em tepo real dentro da tabela.
+ // exibindo os dados na pagina html na (tabela), usando o formato de (template string) concatenando asb variaveis js com tag html.
 async function printTasks() {
 
     let searchAPI = await fetch("http://localhost:3000/dados")
     let returnAPI = await searchAPI.json()
-    let linha = ""
+    let linne = ""
     let color = ""
 
     returnAPI.forEach(element => {
@@ -125,8 +125,8 @@ async function printTasks() {
             color = "red"
         }
 
-        linha = linha + `<tr 
-        id='linha${element.id}'>
+        linne = linne + `<tr 
+        id='linne${element.id}'>
         <td id="numero${element.id}">${element.numero}</td>
         <td id="descricao${element.id}">${element.descricao}</td>
         <td id="data${element.id}">${element.data.split('-').reverse().join('-')}</td>
@@ -136,7 +136,7 @@ async function printTasks() {
         </tr>`
     });
 
-    document.getElementById("bodyTable").innerHTML = linha
+    document.getElementById("bodyTable").innerHTML = linne
     
 }
 
